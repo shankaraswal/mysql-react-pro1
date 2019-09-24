@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/style.css" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body class="orderList">
+    <% include partials/nav %>
+        <div class="container">
+            <div class="jumbotron ">
+                <h1 class="display-5 ">
+                    <%= title %>
+                </h1>
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention
+                    to featured content or information.</p>
+                <hr class="my-4">
+                <p>It uses utility classes for typography and spacing to space content out within the larger container.
+                </p>
+                
+                <div class="">
+                    <table class="table table-striped">
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th scope="col">Order Number</th>
+                                <th scope="col">Customer Number</th>
+                                <th scope="col">Order Date</th>
+                                <th scope="col">Required Date</th>
+                                <th scope="col">Shipped Date</th>
+                                <th scope="col">Order Status</th>
+                                <!-- <th class="hide" scope="col">Comments</th> -->
+                                <th></th>
+
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.forEach(item=>{ 
+                                if(item){%>
+                                <tr key='<%= item.orderNumber %>'>
+                                    <th>
+                                        <%= item.orderNumber %>
+                                    </th>
+                                    <td scope="row">
+                                        <%= item.customerNumber %>
+                                    </td>
+
+                                    <td>
+                                       <%= moment(item.orderDate).format('DD-MM-YYYY'); %>
+                                    </td>
+                                    <td>
+                                        <%= moment(item.requiredDate).format('DD-MM-YYYY'); %>
+                                    </td>
+                                    <td>
+                                        <%= moment(item.shippedDate).format('DD-MM-YYYY'); %>
+                                    </td>
+                                    <td>
+                                        <%= item.status %>
+                                    </td>
+                                    <!-- <td class="hide">
+                                        <%= item.comments %>
+                                    </td> -->
+                                    <td>
+                                        <i class="fa fa-ellipsis-h"></i>
+                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-minus"></i>
+                                    </td>
+                                </tr>
+                                <%  }   
+                })   %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <% include partials/footer %>
+            <script src="/js.js"></script>
+</body>
+
+</html>

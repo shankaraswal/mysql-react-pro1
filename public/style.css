@@ -1,0 +1,6 @@
+body {
+    background: #ddd;
+}
+.minH550{min-height: 550px}
+.uppercase{ text-transform: uppercase}
+.jumbotron{margin-bottom: 0}
